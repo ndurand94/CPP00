@@ -10,3 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
+# include <iostream>
+
+class Contact {
+
+    public:
+        Contact();
+        ~Contact();
+
+        //int         getIndex() const;
+        std::string getContactInfo();
+        void        setContactInfo(std::string s1, std::string s2, std::string s3, std::string s4, std::string s5);
+
+    private:
+        int         _index;
+        std::string	_first_name;
+        std::string	_last_name;
+        std::string	_nickname;
+        std::string	_phone_number;
+        std::string	_darkest_secret; 
+
+};
+
+#endif

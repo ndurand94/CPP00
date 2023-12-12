@@ -18,7 +18,7 @@ $(NAME):	$(OBJS)
 	$(CC) $(CFLAGS) $(CPPFLAGS) $(OBJS) -o $(NAME) 
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(NAME)
 
 fclean:		clean
 	$(RM) $(NAME)
