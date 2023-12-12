@@ -17,8 +17,6 @@
 Contact::Contact()
 {
     std::cout << "contact constructor called !" << std::endl;
-    this->_index = 1 ;
-    this->_first_name = "nicolas";
     return ;
 }
 
@@ -28,15 +26,29 @@ Contact::~Contact()
     return;
 }
 
-/*void   Contact::getIndex()
-{
-    return;
-}*/
-
-std::string Contact::getContactInfo()
+std::string Contact::getContactfirstname()
 {
     return this->_first_name;
+}
 
+std::string Contact::getContactlastname()
+{
+    return this->_last_name;
+}
+
+std::string Contact::getContactnickname()
+{
+    return this->_nickname;
+}
+
+std::string Contact::getContactphonenumber()
+{
+    return this->_phone_number;
+}
+
+std::string Contact::getContactdarkestsecret()
+{
+    return this->_darkest_secret;
 }
 
 void Contact::setContactInfo(std::string s1, std::string s2, std::string s3, std::string s4, std::string s5)
@@ -47,4 +59,13 @@ void Contact::setContactInfo(std::string s1, std::string s2, std::string s3, std
     this->_phone_number = s4;
     this->_darkest_secret = s5;
     return;
+}
+
+void Contact::printContactInfo()
+{
+    std::cout << "First name :" << this->_first_name << std::endl;
+    std::cout << "Last name :" << this->_last_name << std::endl;
+    std::cout << "Nickname :" << this->_nickname << std::endl;
+    std::cout << "Phone number :" << this->_phone_number << std::endl;
+    std::cout << "Darkest Secret :" << this->_darkest_secret << std::endl;
 }

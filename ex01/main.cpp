@@ -19,8 +19,10 @@ void    command_choice(PhoneBook *pb)
 {
     std::string commandreceived;
 
+    static int  i = 0;
+
     std::cout << "Enter a command :";
-    std::cin >> commandreceived;
+    std::getline(std::cin, commandreceived);
 
     if (commandreceived == "ADD" || commandreceived == "SEARCH" || commandreceived == "EXIT")
     {
@@ -34,23 +36,50 @@ void    command_choice(PhoneBook *pb)
 
             std::cout << "Adding new contact..." << std::endl;
             std::cout << "Enter first name : ";
-            std::cin >> firstname;
+            std::getline(std::cin, firstname);
             std::cout << "Enter last name : ";
-            std::cin >> lastname;
-            std::cout << "Enter nickname : ";
-            std::cin >> nickname;
+            std::getline(std::cin, lastname);
+            std::cout <<  "Enter nickname : ";
+            std::getline(std::cin, nickname);
             std::cout << "Enter phone number : ";
-            std::cin >> phonenb;
+            std::getline(std::cin, phonenb);
             std::cout << "Enter darkest secret : ";
-            std::cin >> dksecret;
-            pb->T[1].setContactInfo(firstname, lastname, nickname, phonenb, dksecret);
-            std::cout << "New contact added !" << std::endl;
-            command_choice(pb);
+            std::getline(std::cin, dksecret);
+            if (firstname == "" || lastname == "" || nickname == "" || phonenb == "" || dksecret == "")
+            {
+                std::cout << "New contact info cannot be void !" << std::endl;
+                command_choice(pb);
+            }
+            else 
+            {
+                pb->T[i].setContactInfo(firstname, lastname, nickname, phonenb, dksecret);
+                i++;
+                if (i == 8)
+                    i = 1;
+                std::cout << "New contact added !" << std::endl;
+                command_choice(pb);
+            }
         }
         else if (commandreceived == "SEARCH")
         {
-            std::cout << "SEARCH COMMAND" << std::endl;
-            command_choice(pb);
+            std::string str;
+            int         index;
+
+            std::cout << "quel contact tu veux ?" << std::endl;
+            std::getline(std::cin, str);
+            const char * c = str.c_str();
+            index = atoi(c);
+            if (index >= 0 && index <= 7)
+            {
+                std::cout << "Contact index " << index << " affiché :" << std::endl;
+                pb->T[index].printContactInfo();         
+                command_choice(pb);
+            }
+            else
+            {
+                    std::cout << "Please enter valid index !" << std::endl;
+                    command_choice(pb);
+            }
         }
         else if (commandreceived == "EXIT")
         {

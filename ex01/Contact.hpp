@@ -20,9 +20,14 @@ class Contact {
         Contact();
         ~Contact();
 
-        //int         getIndex() const;
+        std::string getContactfirstname();
+        std::string getContactlastname();
+        std::string getContactnickname();
+        std::string getContactphonenumber();
+        std::string getContactdarkestsecret();
         std::string getContactInfo();
         void        setContactInfo(std::string s1, std::string s2, std::string s3, std::string s4, std::string s5);
+        void        printContactInfo();
 
     private:
         int         _index;
